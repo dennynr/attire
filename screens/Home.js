@@ -14,7 +14,7 @@ import {
   AvatarFallbackText
 } from "@gluestack-ui/themed";
 import Header from '../components/Header';
-import { Entypo, FontAwesome } from "@expo/vector-icons";
+import { Entypo, FontAwesome, EvilIcons } from "@expo/vector-icons";
 import { Dimensions, StyleSheet, Platform } from 'react-native';
 import MasonryList from '@react-native-seoul/masonry-list';
 import { useNavigation } from "@react-navigation/native";
@@ -40,6 +40,9 @@ const Home = ({ route }) => {
   }, []);
   console.log("ini usernameku", username)
 
+  const refresh = () => {
+    navigation.replace("Tabs");
+  }
   // console.log('hasilnya yaaaaituuu '+ costume)
 
   // const fetchCostumeData = async () => {
@@ -293,9 +296,19 @@ const Home = ({ route }) => {
             </ScrollView>
           </Box>
         </Box>
-        <Box paddingVertical={10} rounded={5} >
-          <Heading flex={1} marginStart={20} color={'#021C35'}>Katalog</Heading>
-        </Box>
+        <HStack paddingVertical={10}>
+          <Box rounded={5} >
+            <Heading flex={1} marginStart={20} color={'#021C35'}>Katalog</Heading>
+          </Box>
+          <Pressable 
+            onPress={() => navigation.replace("Tabs")}
+            mt={8}
+          >
+            <Text>
+              <EvilIcons name="refresh" size={24} color="black" />
+            </Text>
+          </Pressable>
+        </HStack>
         {/* <Box flex={1} flexDirection='row' marginBottom={15} padding={10}>
         {ENTRIES1.slice(0, 2).map(item => (
           <Itemku key={item.id} item={item} />
